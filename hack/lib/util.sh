@@ -147,11 +147,14 @@ kube::util::host_platform() {
     arm*)
       host_arch=arm
       ;;
+    aarch64*)
+      host_arch=arm64
+      ;;
     i?86*)
       host_arch=x86
       ;;
     *)
-      kube::log::error "Unsupported host arch. Must be x86_64, 386 or arm."
+      kube::log::error "Unsupported host arch. Must be x86_64, 386, arm or aarch64."
       exit 1
       ;;
   esac
