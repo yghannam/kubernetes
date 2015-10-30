@@ -112,7 +112,7 @@ func fd_move(to, from FileDescriptor) (err error) {
 		return
 	}
 	for {
-		_, _, e1 := syscall.RawSyscall(syscall.SYS_DUP2, uintptr(from), uintptr(to), 0)
+		_, _, e1 := syscall.RawSyscall(syscall.SYS_DUP3, uintptr(from), uintptr(to), 0)
 		if e1 != syscall.EINTR {
 			if e1 != 0 {
 				err = e1
