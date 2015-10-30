@@ -31,8 +31,8 @@ func (interceptor *outputInterceptor) StartInterceptingOutput() error {
 		return err
 	}
 
-	syscall.Dup2(int(interceptor.redirectFile.Fd()), 1)
-	syscall.Dup2(int(interceptor.redirectFile.Fd()), 2)
+	syscall.Dup3(int(interceptor.redirectFile.Fd()), 1, 0)
+	syscall.Dup3(int(interceptor.redirectFile.Fd()), 2, 0)
 
 	return nil
 }
