@@ -103,7 +103,7 @@ func (c *linuxConsole) dupStdio() error {
 	}
 	fd := int(slave.Fd())
 	for _, i := range []int{0, 1, 2} {
-		if err := syscall.Dup2(fd, i); err != nil {
+		if err := syscall.Dup3(fd, i, 0); err != nil {
 			return err
 		}
 	}
